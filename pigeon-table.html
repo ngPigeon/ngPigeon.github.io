@@ -4,11 +4,12 @@
     <title>ngPigeon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="img/pigeon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-light navbar-expand-sm bg-light sticky-top">
-        <a class="navbar-brand" href="../"><img src="../img/pigeon.png" width="40"> ngPigeon</a>
+    <nav class="navbar navbar-light navbar-expand-md bg-light sticky-top">
+        <a class="navbar-brand" href="../"><img src="img/pigeon.png" width="40"> ngPigeon</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -16,6 +17,22 @@
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        v1.1
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item active" href="#">Latest (v1.1)</a>
+                        <a class="dropdown-item" href="#">v1.0.1</a>
+                        <a class="dropdown-item" href="#">v1.0</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#getting_started">Getting Started</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how_to_use">How to use?</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://github.com/ngPigeon"><i class="fab fa-github"></i> GitHub</a>
                 </li>
@@ -27,11 +44,66 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-md-9 col-sm-12">
-                    <h1 class="display-4 text-md-left text-sm-center">Pigeon Table</h1>
+                    <h1 class="display-4">Pigeon Table</h1>
                     <p class="lead mt-3">A tools that display out the MySQL results in table form dynamically.</p>
+                    <a class="btn btn-lg btn-outline-primary" role="button" href="https://google.com/"><i class="fas fa-download"></i> Download (v1.1)</a>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container" id="getting_started">
+        <h3>Getting Started</h3>
+        <hr />
+
+        <h5>Dependencies</h5>
+        <ul>
+            <li><a href="https://getbootstrap.com/docs/3.3/">Bootstrap v3.0</a> (tested with v3.3.7) Bootstrap require <strong><a href="https://jquery.com/download/">jQuery plugin</a></strong>.</li>
+            <li><a href="https://angularjs.org/">AngularJS v1.6.0</a> (tested with v1.6.8)</li>
+            <li><a href="https://angular-ui.github.io/bootstrap/">AngularUI Bootstrap v2.5.0</a> (tested with v2.5.0)</li>
+        </ul>
+
+        <br />
+
+        <h5>Basic Setup</h5>
+        <p>As soon as you downloaded all the plugins, just includes all the plugins into your project in the order as below:</p>
+        <ol>
+            <li>jQuery</li>
+            <li>Bootstrap</li>
+            <li>AngularJS</li>
+            <li>AngularUI Bootstrap</li>
+            <li>Pigeon Table</li>
+        </ol>
+
+        <p>*** If your project is running in PHP, you can insert the "includes.php" to include all the dependencies. The "includes.php" file is located in "pigeon-table/php/includes.php".</p>
+
+        <br />
+
+        <h5>Database Configuration</h5>
+        <p>A simple database configuration is required to connect and retrieve the data from SQL database. The database configuration is stored in "pigeon-core/configdb.php".</p>
+    </div>
+
+    <div class="container mt-5" id="how_to_use">
+        <h3>How to use?</h3>
+        <hr />
+
+        <h5>Pigeon Table Directive</h5>
+        <p>In order to use pigeon table, you are required to include "pigeon-table" HTML tag into your project.</p>
+
+        <br />
+
+        <h5>Pigeon Table Settings</h5>
+        <ul>
+            <li>
+                <p><kbd>query</kbd> - SQL query for data retrieval <span class="text-danger font-italic">*Required</span></p>
+            </li>
+            <li>
+                <p><kbd>editable</kbd> (<var>Default: <strong>false</strong></var>) - Whether enable CRUD operation or not. CRUD operation will be <strong>disabled</strong> if Pigeon Table detects aggregation table or JOIN table.</p>
+            </li>
+            <li>
+                <p><kbd>control</kbd> (<var>Default: <strong>true</strong></var>) - Whether display the panel on top of the Pigeon Table or not.</p>
+            </li>
+        </ul>
     </div>
 
 
