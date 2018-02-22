@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngPigeon">
+<head>
+    <!-- Pigeon Table v1.0.1 documentation -->
+    <title>ngPigeon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="img/pigeon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body ng-controller="pigeon-table">
+    <nav class="navbar navbar-light navbar-expand-md bg-light sticky-top">
+        <a class="navbar-brand" href="../../../"><img src="../../../img/pigeon.png" width="40"> ngPigeon</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        v1.0.1
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{doc.url}}" ng-repeat="doc in docs">{{doc.version}}</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#getting_started">Getting Started</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how_to_use">How to use?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#components">Components</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/ngPigeon"><i class="fab fa-github"></i> GitHub</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-9 col-sm-12">
+                    <h1 class="display-4">Pigeon Table</h1>
+                    <p class="lead mt-3">A tools that display out the MySQL results in table form dynamically.</p>
+                    <a class="btn btn-lg btn-outline-primary" role="button" href="https://github.com/ngPigeon/pigeon-table/releases/tag/v1.0.1"><i class="fas fa-download"></i> Download (v1.0.1)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Release Note:</h3>
+        <hr />
+
+        <h5>What's New?</h5>
+        <ul>
+            <li>Added new attribute named "control" to show and hide controls. [true/ false].</li>
+        </ul>
+
+        <h5>Bugs Fixed</h5>
+        <ul>
+            <li>Fixed case-sensitive issue in SQL query syntax.</li>
+        </ul>
+
+        <h5>Improvement</h5>
+        <ul>
+            <li>Removed show all from number of row. The maximum number of displayed rows are 50.</li>
+            <li>Redesigned the form control elements.</li>
+            <li>Added pagination to the bottom right of the table.</li>
+            <li>Added exact-match to provide case sensitive searching.</li>
+        </ul>
+    </div>
+
+    <div class="container mt-5" id="getting_started">
+        <h3>Getting Started</h3>
+        <hr />
+
+        <h5>Dependencies</h5>
+        <ul>
+            <li><a href="https://getbootstrap.com/docs/3.3/">Bootstrap v3.0</a> (tested with v3.3.7) Bootstrap require <strong><a href="https://jquery.com/download/">jQuery plugin</a></strong>.</li>
+            <li><a href="https://angularjs.org/">AngularJS v1.6.0</a> (tested with v1.6.8)</li>
+            <li><a href="https://docs.angularjs.org/api/ngCookies">Angular Cookies v1.6.0</a> (tested with v1.6.4)</li>
+        </ul>
+
+        <br />
+
+        <h5>Basic Setup</h5>
+        <p>As soon as you downloaded all the plugins, just includes all the plugins into your project in the order as below:</p>
+        <ol>
+            <li>jQuery</li>
+            <li>Bootstrap</li>
+            <li>AngularJS</li>
+            <li>Angular Cookies</li>
+            <li>Pigeon Table</li>
+        </ol>
+
+        <p>*** If your project is running in PHP, you can insert the "includes.php" to include all the dependencies. The "includes.php" file is located in "pigeon-table/php/includes.php".</p>
+
+        <br />
+
+        <h5>Database Configuration</h5>
+        <p>A simple database configuration is required to connect and retrieve the data from SQL database. The database configuration is stored in "pigeon-table/configdb.php".</p>
+    </div>
+
+    <div class="container mt-5" id="how_to_use">
+        <h3>How to use?</h3>
+        <hr />
+
+        <h5>Pigeon Table Directive</h5>
+        <p>In order to use pigeon table, you are required to include "pigeon-table" HTML tag into your project.</p>
+        <pre class="p-2 bg-light"><code>&lt;pigeon-table query="SELECT * FROM user_account" editable="false" control="true"&gt;&lt;/pigeon-table&gt;</code></pre>
+
+
+        <br />
+
+        <h5>Pigeon Table Settings</h5>
+        <ul>
+            <li>
+                <p><kbd>query</kbd> - SQL query for data retrieval <span class="text-danger font-italic">*Required</span></p>
+            </li>
+            <li>
+                <p><kbd>editable</kbd> (<var>Default: <strong>false</strong></var>) - Whether enable CRUD operation or not. CRUD operation will be <strong>disabled</strong> if Pigeon Table detects <strong>aggregation table</strong> or <strong>JOIN table</strong>.</p>
+            </li>
+            <li>
+                <p><kbd>control</kbd> (<var>Default: <strong>true</strong></var>) - Whether display the panel on top of the Pigeon Table or not.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container mt-5" id="components">
+        <h3>Pigeon Table Components</h3>
+        <hr />
+
+        <h5>Sortable</h5>
+        <p>The data can be sorted to either ascending or descending order by clicking on the column title.</p>
+        <img src="../v1.0.1/img/sortable.png" class="img-fluid" />
+
+        <br />
+
+        <h5>Searchable</h5>
+        <p>The data can be filtered by entering the data you want to search along with the column you want to filter with. Besides that, exact match provides sensitive filtering to the data.</p>
+        <img src="../v1.0.1/img/searchable.png" class="img-fluid" />
+
+        <br />
+
+        <h5>Excludable</h5>
+        <p>The data also can be excluded by entering the data you want to exclude along with the column you want to exclude with. <span class="text-danger font-italic">*Note:</span> The data will be excluded in exact match (case sensitive).</p>
+        <img src="../v1.0.1/img/excludable.png" class="img-fluid" />
+
+        <br />
+
+        <h5>Insert (CRUD Operation)</h5>
+        <p>You can insert the data into that MySQL table. The input field of the insertion is based on the columns that are specified in the SQL query. Data validation will be conducted base on the MySQL table column's type.</p>
+        <img src="../v1.0.1/img/insert.png" class="img-fluid" />
+
+        <br />
+
+        <h5>Edit (CRUD Operation)</h5>
+        <p>You can edit the data of every row. The input field of the edit form is based on the columns that are specified in the SQL query. The validation is based on the MySQL table column's type. <span class="text-danger font-italic">*Note:</span> The primary key input field cannot be edit.</p>
+        <img src="../v1.0.1/img/edit.png" class="img-fluid" />
+
+        <br />
+
+        <h5>Delete (CRUD Operation)</h5>
+        <p>You can delete the data of each row by clicking on the delete button. A delete confirmation box will pop out before perform deletion.</p>
+        <img src="../v1.0.1/img/delete.png" class="img-fluid" />
+    </div>
+
+    <br />
+
+    <div class="jumbotron mb-0 text-center">
+        <p>2018 ngPigeon</p>
+        <p>Designed by all ngPigeon contributors.</p>
+        <p>Code licensed under <a href="https://github.com/ngPigeon/pigeon-table/blob/master/LICENSE">MIT License</a>.</p>
+    </div>
+
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="../../../js/app.js"></script>
+</body>
+</html>
