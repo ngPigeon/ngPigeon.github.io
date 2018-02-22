@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Pigeon Chart v1.0 documentation -->
+    <title>ngPigeon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="img/pigeon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-md bg-light sticky-top">
+        <a class="navbar-brand" href="../../../"><img src="img/pigeon.png" width="40"> ngPigeon</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#getting_started">Getting Started</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how_to_use">How to use?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#components">Components</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/ngPigeon"><i class="fab fa-github"></i> GitHub</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-9 col-sm-12">
+                    <h1 class="display-4">Pigeon Chart</h1>
+                    <p class="lead mt-3">A tools that display out the MySQL results in chart form dynamically.</p>
+                    <a class="btn btn-lg btn-outline-primary" role="button" href="https://github.com/Evacch/pigeon-chart/releases/tag/v1.0"><i class="fas fa-download"></i> Download (v1.0)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="getting_started">
+        <h3>Getting Started - v1.0</h3>
+		<p>Pigeon Chart v1.0 supports 4 basic chart types: <strong>Line</strong>, <strong>Column</strong>, <strong>Bar</strong> and <strong>Pie</strong>.</p>
+        <hr />
+
+        <h5>Dependencies</h5>
+        <ul>
+            <li><a href="https://angularjs.org/">AngularJS v1.6.4</a></li>
+            <li><a href="http://underscorejs.org">Underscore 1.8.3</a></li>
+	        <li><a href="https://code.highcharts.com/highcharts.js">Highcharts Latest Stable Version</a></li>
+	        <li><a href="https://code.highcharts.com/modules/series-label.js">Highcharts Series Label Modules Latest Stable Version</a></li>
+	        <li><a href="https://code.highcharts.com/modules/exporting.js">Highcharts Exporting Latest Stable Version</a></li>
+	        <li><a href="https://github.com/blacklabel/grouped_categories">Grouped Categories(Highcharts related JS framework) v1.1.2</a></li>
+        </ul>
+
+        <br />
+
+        <h5>Basic Setup</h5>
+        <p>As soon as you downloaded all the plugins, just includes all the plugins into your project in the order as below:</p>
+        <ol>
+            <li>AngularJS</li>
+            <li>Highcharts</li>
+			<li>Underscore</li>
+			<li>grouped-categories</li>
+            <li>Pigeon Chart</li>
+        </ol>
+
+        <p>*** If your website is running on PHP, you can just insert the "includes.php" file into your PHP project instead of insert JS file one by one. "includes.php" file is located under "pigeon-chart/php" folder. </p>
+
+        <br />
+
+        <h5>Database Configuration</h5>
+        <p>A simple database configuration is required to connect and retrieve the data from SQL database. The database configuration is stored in "pigeon-chart/configdb.php".</p>
+    </div>
+
+    <div class="container mt-5" id="how_to_use">
+        <h3>How to use?</h3>
+        <hr />
+
+        <h5>Pigeon Chart Directive</h5>
+        <p>In order to use pigeon chart, you are required to include "pigeon-chart" HTML tag into your project.</p>
+        <pre class="p-2 bg-light"><code>&lt;pigeon-chart query="SELECT name, val FROM web_marketing" title="Total Visitors" subtitle="Web Marketing Companies" type="pie" axisy-title="Total" axisx-title="Web Marketing Company" data-data-label="false"&gt;Placeholder for generic chart&lt;/pigeon-chart&gt;</code></pre>
+        <br />
+
+        <h5>Pigeon Chart Settings</h5>
+        <ul>
+            <li>
+                <p><kbd>query</kbd> - SQL query for data retrieval <span class="text-danger font-italic">*Required</span></p>
+            </li>
+            <li>
+                <p><kbd>title</kbd> - Set a title for your chart.</p>
+            </li>
+            <li>
+                <p><kbd>subtitle</kbd> - Set a subtitle for your chart.</p>
+            </li>
+            <li>
+                <p><kbd>type</kbd> - State the chart type.</p>
+            </li>
+            <li>
+                <p><kbd>axisy-title</kbd> - Set a y-axis title for your chart.</p>
+            </li>
+            <li>
+                <p><kbd>axisx-title</kbd> - Set a x-axis title for your chart.</p>
+            </li>
+            <li>
+                <p><kbd>data-data-label</kbd> (<var>true</var> or <var>false</var>) - set true to enable data labelling and vice versa.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container mt-5" id="components">
+        <h3>Pigeon Chart Components - Chart Display with different queries</h3>
+        <hr />
+
+        <h5>1. Basic Query</h5>
+        <pre class="p-2 bg-light"><code>&lt;pigeon-chart query="SELECT name, val FROM web_marketing" title="Total Visitors" subtitle="Web Marketing Companies" type="pie" axisy-title="Total" axisx-title="Web Marketing Company" data-data-label="false"&gt;Placeholder for generic chart&lt;/pigeon-chart&gt;</code></pre>
+        <h6>Pie</h6>
+		<div class="text-center">
+			<img src="img/pigeon-chart/basic-query-pie.PNG"/>
+		</div>
+		<h6>Column</h6>
+		<div class="text-center">
+			<img src="img/pigeon-chart/basic-query-column.PNG"/>
+		</div>
+        <br />
+
+        <h5>2. Query with aggregated function</h5>
+        <pre class="p-2 bg-light"><code>&lt;pigeon-chart query="SELECT semester, school, gender, COUNT(*) as Total FROM student GROUP BY semester, school, gender" title="Sunway, Swinburne and UCTS" subtitle="Total students" type="column" axisy-title="Total" axisx-title="University" data-data-label="false"&gt;Placeholder for generic chart&lt;/pigeon-chart&gt;</code></pre>
+        <h6>Bar</h6>
+		<div class="text-center">
+			<img src="img/pigeon-chart/query-with-aggregated-functions-bar.PNG"/>
+		</div>
+		<h6>Column</h6>
+		<div class="text-center">
+			<img src="img/pigeon-chart/query-with-aggregated-functions-column.PNG"/>
+		</div>
+        <br />
+
+        <h5>3. Multi-series</h5>
+        <pre class="p-2 bg-light"><code>&lt;pigeon-chart query="SELECT tdate, open, high, low, close FROM quotes WHERE stock = 'DiGi Bhd' LIMIT 20" title="Stock Quotes For DiGi" subtitle="Comparison between open, high, low and close price" type="line" axisy-title="Stock Quotes" axisx-title="Date" data-data-label="false"&gt;Placeholder for generic chart&lt;/pigeon-chart&gt;</code></pre>
+		<h6>Line</h6>
+		<div class="text-center">
+			<img src="img/pigeon-chart/multi-series-line.PNG"/>
+		</div>
+        <br />
+    </div>
+
+    <br />
+
+    <div class="jumbotron mb-0 text-center">
+        <p>2018 ngPigeon</p>
+        <p>Designed by all ngPigeon contributors.</p>
+        <p>Code licensed under <a href="https://github.com/Evacch/pigeon-chart/blob/v1.0/LICENSE">MIT License</a>.</p>
+    </div>
+
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="../../../js/app.js"></script>
+</body>
+</html>
